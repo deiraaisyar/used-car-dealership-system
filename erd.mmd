@@ -1,0 +1,45 @@
+erDiagram
+
+    car {
+        int car_id PK
+        string brand
+        string model
+        year year
+        int mileage
+        string transmission
+        string fuel_type
+        string color
+        decimal purchase_price
+        decimal selling_price
+        enum status
+    }
+
+    customer {
+        int customer_id PK
+        string name
+        string phone
+        string email
+        string address
+    }
+
+    employee {
+        int employee_id PK
+        string name
+        string position
+        string phone
+        string address
+    }
+
+    sale {
+        int sale_id PK
+        date sale_date
+        decimal sale_price
+        string payment_method
+        int car_id FK
+        int customer_id FK
+        int employee_id FK
+    }
+
+    car ||--o{ sale : "has"
+    customer ||--o{ sale : "makes"
+    employee ||--o{ sale : "handles"
